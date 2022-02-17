@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Сарван Шириев](https://up.htmlacademy.ru/javascript/25/user/1287903).
-* Наставник: `Неизвестно`.
+* Наставник: [Павел Нюкало](https://htmlacademy.ru/profile/nyukalopavel).
 
 ---
 
