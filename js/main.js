@@ -30,20 +30,19 @@ function returnNumber(min,max) {
 }
 
 const commentUser = (digit) => ( {
-    id: digit,
-    avatar: `img/avatar-${returnNumber(1,6)}.svg`,
-    message: TEXT[returnNumber(0,TEXT.length-1)],
-    name: NAMES[returnNumber(0,NAMES.length-1)]
+  id: digit,
+  avatar: `img/avatar-${returnNumber(1,6)}.svg`,
+  message: TEXT[returnNumber(0,TEXT.length-1)],
+  name: NAMES[returnNumber(0,NAMES.length-1)]
   }
-)
-;
+);
 
 const createUser = (index) => ( {
-    id: index ,
-    url:`photos/${index}.jpg` ,
-    description: 'Это самая лучшая фотография',
-    likes:returnNumber(15,200),
-    comments :commentUser (index+1)
+  id: index ,
+  url:`photos/${index}.jpg` ,
+  description: 'Это самая лучшая фотография',
+  likes:returnNumber(15,200),
+  comments :commentUser (index+1)
   }
 );
 
