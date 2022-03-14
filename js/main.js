@@ -34,7 +34,7 @@ const commentUser = (digit) => ( {
   avatar: `img/avatar-${returnNumber(1,6)}.svg`,
   message: TEXT[returnNumber(0,TEXT.length-1)],
   name: NAMES[returnNumber(0,NAMES.length-1)]
-  }
+}
 );
 
 const createUser = (index) => ( {
@@ -43,7 +43,7 @@ const createUser = (index) => ( {
   description: 'Это самая лучшая фотография',
   likes:returnNumber(15,200),
   comments :commentUser (index+1)
-  }
+}
 );
 
 const randomNumber = [];
