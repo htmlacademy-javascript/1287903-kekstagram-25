@@ -1,8 +1,8 @@
 const MAX_VALUE= 10;
-function checkLength(comment,max) {
+function checkComment(comment,max) {
   return comment.length<=max;
 }
-checkLength('Привет всем,как дела?Как жизнь?!', MAX_VALUE);
+checkComment('Привет всем,как дела?Как жизнь?!', MAX_VALUE);
 
 
 const NAMES = [
@@ -29,28 +29,28 @@ function returnNumber(min,max) {
   return Math.floor((Math.random()*(max-min+1))+min);
 }
 
-const commentUser = (digit) => {
-  return {
+const commentUser = (digit) => ( {
     id: digit,
     avatar: `img/avatar-${returnNumber(1,6)}.svg`,
     message: TEXT[returnNumber(0,TEXT.length-1)],
     name: NAMES[returnNumber(0,NAMES.length-1)]
-  };
-};
+  }
+)
+;
 
-const createUser = (index) => {
-  return {
+const createUser = (index) => ( {
     id: index ,
     url:`photos/${index}.jpg` ,
     description: 'Это самая лучшая фотография',
     likes:returnNumber(15,200),
     comments :commentUser (index+1)
-  };
-};
+  }
+);
 
-const randomNumber = []
+const randomNumber = [];
+
 for (let i=1;i<=25;i++) {
-  randomNumber.push(createUser(i))
+  randomNumber.push(createUser(i));
 }
 
 console.log(randomNumber);
