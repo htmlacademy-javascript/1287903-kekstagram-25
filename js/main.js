@@ -52,4 +52,3 @@ for (let i=1;i<=25;i++) {
   randomNumber.push(createUser(i));
 }
 
-console.log(randomNumber);
