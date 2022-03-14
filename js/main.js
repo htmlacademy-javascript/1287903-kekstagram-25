@@ -46,9 +46,9 @@ const createUser = (index) => ( {
 }
 );
 
-const randomNumber = [];
+const randomDescription = [];
 
 for (let i=1;i<=25;i++) {
-  randomNumber.push(createUser(i));
+  randomDescription.push(createUser(i));
 }
 
