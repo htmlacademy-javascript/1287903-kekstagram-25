@@ -1,4 +1,4 @@
-import { returnNumber } from "./util.js";
+import { returnNumber } from './util.js';
 
 const NAMES = [
   'Иван',
