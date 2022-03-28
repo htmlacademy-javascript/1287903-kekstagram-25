@@ -33,7 +33,7 @@ const createUser = (index) => ( {
   url:`photos/${index}.jpg`,
   description: 'Это самая лучшая фотография',
   likes:returnNumber(15,200),
-  comments :commentUser (index+1)
+  comments :[commentUser (index+1)]
 }
 );
 

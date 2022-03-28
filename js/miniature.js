@@ -1,10 +1,22 @@
 import {randomNumber} from './data.js';
 
-const picture = document.querySelector('.picture__img');
-picture.src = 'avatar';
+const pictureElement = document.querySelector('.pictures');
 
-const pictureLikes = document.querySelector('.picture__likes');
-pictureLikes.textContent = 'likes';
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const pictureComments = document.querySelector('.picture__comments');
-pictureComments.textContent = 'comments';
+const pictureFragment = document.createDocumentFragment();
+
+randomNumber.forEach(({url,likes,comments}) => {
+  const userElement = pictureTemplate.cloneNode(true);
+
+  userElement.querySelector('.picture__img').src = url;
+
+  userElement.querySelector('.picture__likes').textContent = likes;
+
+  userElement.querySelector('.picture__comments').textContent = comments.length;
+
+  pictureFragment.appendChild(userElement);
+
+});
+
+pictureElement.appendChild(pictureFragment);
