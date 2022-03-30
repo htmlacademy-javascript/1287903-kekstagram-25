@@ -4,12 +4,30 @@ import {randomNumber} from './data.js';
 const fullSize = document.querySelector('.big-picture');
 fullSize.classList.remove('hidden');
 
+// Вешаем обработчик на сетку
+fullSize.addEventListener('click', function() {} )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const preview = document.querySelector('.big-picture__preview');
 
 const bigPictureFragment = document.createDocumentFragment();
 
-randomNumber.forEach(({url,likes,comments,description}) => {
-  const bigPicture = preview .cloneNode(true);
+randomNumber.forEach(({url,likes,comments,description,}) => {
+  const bigPicture = preview.cloneNode(true);
 
   bigPicture.querySelector('.big-picture__img').src = url;
 
@@ -17,7 +35,6 @@ randomNumber.forEach(({url,likes,comments,description}) => {
 
   bigPicture.querySelector('.comments-count').textContent = comments.length;
 
-  // Список комментариев под фотографией: комментарии должны вставляться в блок .social__comments
 
   bigPicture.querySelector('.social__caption').textContent = description;
 
@@ -25,6 +42,32 @@ randomNumber.forEach(({url,likes,comments,description}) => {
 });
 
 fullSize.appendChild(bigPictureFragment);
+
+
+// Комментарии в блоке ".social__comments"
+const socialComment = document.querySelector('.social__comment');
+
+const bigPictureComment = document.createDocumentFragment();
+
+const socialComments = document.querySelector('.social__comments');
+
+commentUser.forEach(({avatar,name,message}) => {
+  const socialCommentsClone = socialComments.cloneNode(true);
+
+  socialCommentsClone.querySelector('.social__comment').src = avatar;
+
+  socialCommentsClone.querySelector('.social__comment').alt = name;
+
+  socialCommentsClone.querySelector('.social__text').textContent = message;
+
+  bigPictureComment.appendChild(socialCommentsClone);
+
+});
+
+socialComment.appendChild(bigPictureComment);
+
+
+
 
 // Скрываем блоки ".social__comment-count" и  ".comments-loader".
 
@@ -43,15 +86,15 @@ const modalClose = document.querySelector('body');
 modalCLose.classList.remove('modal-open');
 
 // Код для закрытия окна по нажатию клавиши Esc и клике по иконке закрытия.
-const bigPicture = document.querySelector('.big-picture__cancel');
-bigPicture.addEventListener('click' , function () {
-  if (fullSize.classList.contains('hidden')) {
-    fullSize.classList.remove('hidden')
-  }
-});
+// const bigPicture = document.querySelector('.big-picture__cancel');
+// bigPicture.addEventListener('click' , function () {
+//   if (fullSize.classList.contains('hidden')) {
+//     fullSize.classList.remove('hidden')
+//   }
+// });
 
-bigPicture.addEventListener('keydown' , function (evt) {
-  if (evt.keyCode === 27 ) {
-    fullSize.classList.remove('hidden')
-  }
-});
+// bigPicture.addEventListener('keydown' , function (evt) {
+//   if (evt.keyCode === 27 ) {
+//     fullSize.classList.remove('hidden')
+//   }
+// });
