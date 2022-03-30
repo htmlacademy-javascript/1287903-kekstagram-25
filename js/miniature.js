@@ -20,3 +20,5 @@ randomNumber.forEach(({url,likes,comments}) => {
 });
 
 pictureElement.appendChild(pictureFragment);
+
+export{pictureElement};
