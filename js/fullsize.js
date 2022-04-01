@@ -5,6 +5,8 @@ import {pictureElement} from './miniature.js';
 const fullSize = document.querySelector('.big-picture');
 const socialComments = document.querySelector('.social__comments')
 
+const body = document.querySelector('body');
+
 // Список комментариев под фотографией:
 const commmmentsFragment = document.createDocumentFragment();
 
@@ -45,7 +47,6 @@ pictureElement.addEventListener('click', function(event) {
   socialCommentsList()
 
 // Фиксируем контейнер с фотографиями
-  const body = document.querySelector('body');
   body.classList.add('modal-open');
 
 } )
