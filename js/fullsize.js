@@ -48,10 +48,10 @@ pictureElement.addEventListener('click', (event) => {
   fullSize.querySelector('.social__caption').textContent = eventTarget.querySelector('.picture__img').alt;
   socialCommentsList();
 
-// Фиксируем контейнер с фотографиями
+  // Фиксируем контейнер с фотографиями
   body.classList.add('modal-open');
 
-// Скрываем блоки ".social__comment-count" и  ".comments-loader".
+  // Скрываем блоки ".social__comment-count" и  ".comments-loader".
   commentCount.classList.add('hidden');
   commentLoader.classList.add('hidden');
 });
