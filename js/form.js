@@ -22,19 +22,22 @@ uploadCancel.addEventListener('click' ,  () => {
   }
 });
 
-const deleteKeyDown = document.addEventListener('keydown' ,  (evt) =>{
+
+const deleteKeyDown = function (evt) {
   if (evt.keyCode === 27 ) {
     uploadOverlay.classList.add('hidden');
     body.classList.remove('modal-open');
   }
-});
+};
+// document.addEventListener('keydown' , deleteKeyDown);
 
 // Код для валидации формы добавления изображения
 const textDescription = document.querySelector('.text__description');
-textDescription.addEventListener('focus', () => {
-  document.removeEventListener(deleteKeyDown());
-});
+textDescription.addEventListener('focus' , deleteKeyDown);
+textDescription.removeEventListener('blur', deleteKeyDown);
 
-// textDescription.addEventListener('blur', (evt) => {
-
-// };
+// document.addEventListener('keydown' , () => {
+//   if(textDescription.removeEventListener('focus'))
+//   {return deleteKeyDown;
+//   }
+// });
