@@ -38,8 +38,9 @@ function socialCommentsList ( ) {
 
 // Вешаем обработчик на сетку
 pictureElement.addEventListener('click', (event) => {
-if ()
-{
+if (event.target.closest('.img-upload')) {
+  return
+}
 // Удаляем класс "hidden" у элемента ".big-picture" и заполняем его данными о фотографии.
 fullSize.classList.remove('hidden');
 const eventTarget = event.target.closest('a');
@@ -56,7 +57,7 @@ body.classList.add('modal-open');
 // Скрываем блоки ".social__comment-count" и  ".comments-loader".
 commentCount.classList.add('hidden');
 commentLoader.classList.add('hidden');
-}
+
 });
 
 // Код для закрытия окна по нажатию клавиши Esc и клике по иконке закрытия.
