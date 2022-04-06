@@ -38,22 +38,25 @@ function socialCommentsList ( ) {
 
 // Вешаем обработчик на сетку
 pictureElement.addEventListener('click', (event) => {
+if ()
+{
 // Удаляем класс "hidden" у элемента ".big-picture" и заполняем его данными о фотографии.
-  fullSize.classList.remove('hidden');
-  const eventTarget = event.target.closest('a');
-  fullSize.querySelector('.big-picture__img img').src = eventTarget.querySelector('.picture__img').src;
-  fullSize.querySelector('.big-picture__img img').alt = eventTarget.querySelector('.picture__img').alt;
-  fullSize.querySelector('.likes-count').textContent = eventTarget.querySelector('.picture__likes').textContent;
-  fullSize.querySelector('.comments-count').textContent = eventTarget.querySelector('.picture__comments').textContent;
-  fullSize.querySelector('.social__caption').textContent = eventTarget.querySelector('.picture__img').alt;
-  socialCommentsList();
+fullSize.classList.remove('hidden');
+const eventTarget = event.target.closest('a');
+fullSize.querySelector('.big-picture__img img').src = eventTarget.querySelector('.picture__img').src;
+fullSize.querySelector('.big-picture__img img').alt = eventTarget.querySelector('.picture__img').alt;
+fullSize.querySelector('.likes-count').textContent = eventTarget.querySelector('.picture__likes').textContent;
+fullSize.querySelector('.comments-count').textContent = eventTarget.querySelector('.picture__comments').textContent;
+fullSize.querySelector('.social__caption').textContent = eventTarget.querySelector('.picture__img').alt;
+socialCommentsList();
 
-  // Фиксируем контейнер с фотографиями
-  body.classList.add('modal-open');
+// Фиксируем контейнер с фотографиями
+body.classList.add('modal-open');
 
-  // Скрываем блоки ".social__comment-count" и  ".comments-loader".
-  commentCount.classList.add('hidden');
-  commentLoader.classList.add('hidden');
+// Скрываем блоки ".social__comment-count" и  ".comments-loader".
+commentCount.classList.add('hidden');
+commentLoader.classList.add('hidden');
+}
 });
 
 // Код для закрытия окна по нажатию клавиши Esc и клике по иконке закрытия.
