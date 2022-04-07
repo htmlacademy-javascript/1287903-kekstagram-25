@@ -50,13 +50,14 @@ textDescription.addEventListener('blur', () =>{
 // Хештеги
 const textHashtags = document.querySelector('.text__hashtags');
 
+// Проверка отправки не валидных строк
 uploadForm.addEventListener('submit', (event)=> {
   const valid = pristine.validate();
   if (!valid) {
     event.preventDefault();
   }
 } );
-
+// Функция проверки на #,символы,длину хештега
 function checkHashtag (currentValue) {
   const regular = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
   return regular.test(currentValue);
@@ -68,10 +69,29 @@ function checkCorrectHashtags (value) {
   return everyHashtags===true;
 }
 
-pristine.addValidator(textHashtags,checkCorrectHashtags,'Неверный хештег');
+pristine.addValidator(textHashtags,checkCorrectHashtags,'Неверный хештег:Хеш-тег начинается с #;Хеш-теги разделяются пробелом');
 
+// Функция проверки количества хештегов
+function checkAmountHashtags (value) {
+  const hashtagsAmount = value.split(' ');
+  return hashtagsAmount.length <=5;
+}
+pristine.addValidator(textHashtags,checkAmountHashtags,'Не больше 5');
+
+// Функция проверки одного и того же хеш-тега
+// function checkSimilarHashtags (value) {
+//   const hashtagsSimilar = value.split(' ');
+//   for(let i=0;i<=hashtagsSimilar.length;i++) {
+//     for(let j=1;i<=hashtagsSimilar.length;i++){
+//       if(i===j) {
+//         return hashtagsSimilar===false;
+//       }
+//     }
+//   }
+// }
+
+// pristine.addValidator(textHashtags,checkSimilarHashtags,'Одинаковый хеш-тег');
 // Код для отмены кнопки Esc при фокусе на хештег
-
 textHashtags.addEventListener('focus', () =>{
   document.removeEventListener('keydown' , deleteKeyDown);
 });
@@ -79,5 +99,3 @@ textHashtags.addEventListener('focus', () =>{
 textHashtags.addEventListener('blur', () =>{
   document.addEventListener('keydown' , deleteKeyDown);
 });
-
-
