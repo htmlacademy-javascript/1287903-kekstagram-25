@@ -80,14 +80,11 @@ pristine.addValidator(textHashtags,checkAmountHashtags,'Не больше 5');
 
 // Функция проверки одного и того же хеш-тега
 function checkSimilarHashtags (value) {
-  const checkElementHashtags = [];
   const hashtagsSimilar = value.split(' ');
-  for(let i=0;i<=hashtagsSimilar.length;i++) {
-    if (checkElementHashtags.includes([i])) {
-      return false;
-    } else { checkElementHashtags.push([i]);}
-  }
-  return checkElementHashtags;
+  const hashtagsSimilarRegister = hashtagsSimilar.toString();
+  const checkElementHashtags = [...new Set(hashtagsSimilarRegister)];
+  return checkElementHashtags.length === hashtagsSimilar.length;
+
 }
 pristine.addValidator(textHashtags,checkSimilarHashtags,'Одинаковый хеш-тег');
 
