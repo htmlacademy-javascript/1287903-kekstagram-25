@@ -26,7 +26,7 @@ uploadCancel.addEventListener('click' ,  () => {
 });
 
 // Код для закрытия формы редактирования по нажатию клавиши Esc
-const deleteKeyDown = function (evt) {
+const onKeyDown = function (evt) {
   if (evt.keyCode === 27 ) {
     uploadOverlay.classList.add('hidden');
     body.classList.remove('modal-open');
@@ -34,17 +34,17 @@ const deleteKeyDown = function (evt) {
 
   }
 };
-document.addEventListener('keydown' , deleteKeyDown);
+document.addEventListener('keydown' , onKeyDown);
 
 // Код для отмены кнопки Esc при фокусе на комментарий
 const textDescription = document.querySelector('.text__description');
 
 textDescription.addEventListener('focus', () =>{
-  document.removeEventListener('keydown' , deleteKeyDown);
+  document.removeEventListener('keydown' , onKeyDown);
 });
 
 textDescription.addEventListener('blur', () =>{
-  document.addEventListener('keydown' , deleteKeyDown);
+  document.addEventListener('keydown' , onKeyDown);
 });
 
 // Хештеги
@@ -79,23 +79,23 @@ function checkAmountHashtags (value) {
 pristine.addValidator(textHashtags,checkAmountHashtags,'Не больше 5');
 
 // Функция проверки одного и того же хеш-тега
-// function checkSimilarHashtags (value) {
-//   const hashtagsSimilar = value.split(' ');
-//   for(let i=0;i<=hashtagsSimilar.length;i++) {
-//     for(let j=1;i<=hashtagsSimilar.length;i++){
-//       if(i===j) {
-//         return hashtagsSimilar===false;
-//       }
-//     }
-//   }
-// }
+function checkSimilarHashtags (value) {
+  const checkElementHashtags = [];
+  const hashtagsSimilar = value.split(' ');
+  for(let i=0;i<=hashtagsSimilar.length;i++) {
+    if (checkElementHashtags.includes([i])) {
+      return false;
+    } else { checkElementHashtags.push([i]);}
+  }
+  return checkElementHashtags;
+}
+pristine.addValidator(textHashtags,checkSimilarHashtags,'Одинаковый хеш-тег');
 
-// pristine.addValidator(textHashtags,checkSimilarHashtags,'Одинаковый хеш-тег');
 // Код для отмены кнопки Esc при фокусе на хештег
 textHashtags.addEventListener('focus', () =>{
-  document.removeEventListener('keydown' , deleteKeyDown);
+  document.removeEventListener('keydown' , onKeyDown);
 });
 
 textHashtags.addEventListener('blur', () =>{
-  document.addEventListener('keydown' , deleteKeyDown);
+  document.addEventListener('keydown' , onKeyDown);
 });
