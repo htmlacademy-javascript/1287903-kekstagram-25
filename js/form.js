@@ -81,10 +81,9 @@ pristine.addValidator(textHashtags,checkAmountHashtags,'Не больше 5');
 // Функция проверки одного и того же хеш-тега
 function checkSimilarHashtags (value) {
   const hashtagsSimilar = value.split(' ');
-  const hashtagsSimilarRegister = hashtagsSimilar.toString();
+  const hashtagsSimilarRegister = hashtagsSimilar.map((element) => element.toLowerCase());
   const checkElementHashtags = [...new Set(hashtagsSimilarRegister)];
   return checkElementHashtags.length === hashtagsSimilar.length;
-
 }
 pristine.addValidator(textHashtags,checkSimilarHashtags,'Одинаковый хеш-тег');
 
