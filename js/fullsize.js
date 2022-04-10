@@ -3,18 +3,19 @@ import {pictureElement} from './miniature.js';
 
 // Создаём необходимые переменные
 const fullSize = document.querySelector('.big-picture');
-const socialComments = document.querySelector('.social__comments');
 const body = document.querySelector('body');
-const commentCount = document.querySelector('.social__comment-count');
-const commentLoader = document.querySelector('.comments-loader');
+// const commentCount = document.querySelector('.social__comment-count');
+const socialComments = document.querySelector('.social__comments');
+// const commentLoader = document.querySelector('.comments-loader');
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
 const commmmentsFragment = document.createDocumentFragment();
+// const hiddenComments = socialComments.querySelector('.social__comment:nth-child(n+2)');
 
 // Список комментариев под фотографией:
-
 function socialCommentsList ( ) {
-  socialComments.innerHTML = '';
-  randomNumber[0].comments.forEach( (element) => {
+  for (let i=0;i<=5;i++) {
+    socialComments.innerHTML = '';
+    randomNumber[0].comments.forEach( (element) => {
     const li = document.createElement('li');
     li.classList.add('social__comment');
     const img = document.createElement('img');
@@ -32,7 +33,7 @@ function socialCommentsList ( ) {
 
     commmmentsFragment.appendChild(li);
   });
-
+  }
   socialComments.appendChild(commmmentsFragment);
 }
 
@@ -50,18 +51,11 @@ pictureElement.addEventListener('click', (event) => {
   fullSize.querySelector('.comments-count').textContent = eventTarget.querySelector('.picture__comments').textContent;
   fullSize.querySelector('.social__caption').textContent = eventTarget.querySelector('.picture__img').alt;
   socialCommentsList();
-
   // Фиксируем контейнер с фотографиями
   body.classList.add('modal-open');
-
-  // Скрываем блоки ".social__comment-count" и  ".comments-loader".
-  commentCount.classList.add('hidden');
-  commentLoader.classList.add('hidden');
-
 });
 
 // Код для закрытия окна по нажатию клавиши Esc и клике по иконке закрытия.
-
 bigPictureCancel.addEventListener('click' ,  () => {
   if(!fullSize.classList.contains('hidden')) {
     fullSize.classList.add('hidden');
