@@ -4,18 +4,19 @@ import {pictureElement} from './miniature.js';
 // Создаём необходимые переменные
 const fullSize = document.querySelector('.big-picture');
 const body = document.querySelector('body');
-// const commentCount = document.querySelector('.social__comment-count');
+const socialCommentCount = document.querySelector('.social__comment-count');
+const commentsCount = document.querySelector('.comments-count');
 const socialComments = document.querySelector('.social__comments');
-// const commentLoader = document.querySelector('.comments-loader');
+const commentsLoader = document.querySelector('.comments-loader');
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
 const commmmentsFragment = document.createDocumentFragment();
-// const hiddenComments = socialComments.querySelector('.social__comment:nth-child(n+2)');
 
-// Список комментариев под фотографией:
+const amountMaxComments = 15;
+
+// Фрагмент комментария под фотографией:
 function socialCommentsList ( ) {
-  for (let i=0;i<=5;i++) {
-    socialComments.innerHTML = '';
-    randomNumber[0].comments.forEach( (element) => {
+  socialComments.innerHTML = '';
+  randomNumber[0].comments.forEach( (element) => {
     const li = document.createElement('li');
     li.classList.add('social__comment');
     const img = document.createElement('img');
@@ -33,9 +34,38 @@ function socialCommentsList ( ) {
 
     commmmentsFragment.appendChild(li);
   });
-  }
+
+  socialCommentCount.firstChild.textContent = `${ randomNumber.length } из `;
+  commentsCount.textContent = amountMaxComments;
+  // if (socialCommentCount.firstChild.textContent === amountMaxComments) {commentsLoader.classList.add('hidden');}
   socialComments.appendChild(commmmentsFragment);
 }
+
+// Появление новых комментариев при клике на Загрузить ещё
+commentsLoader.addEventListener('click', () =>{
+  // for(let j=0;j<=4;j++) {
+  //   randomNumber[j].comments.forEach( (element) => {
+  //     const li = document.createElement('li');
+  //     li.classList.add('social__comment');
+  //     const img = document.createElement('img');
+  //     img.classList.add('social__picture');
+  //     img.src = element.avatar;
+  //     img.alt = element.name;
+  //     img.width = 35;
+  //     img.height = 35;
+  //     li.appendChild(img);
+
+  //     const p = document.createElement('p');
+  //     p.classList.add('social__text');
+  //     p.textContent = element.message;
+  //     li.appendChild(p);
+
+  //     commmmentsFragment.appendChild(li);
+
+  //   });
+  // }
+  const sliceArgument = randomNumber.slice(1);
+});
 
 // Вешаем обработчик на сетку
 pictureElement.addEventListener('click', (event) => {
