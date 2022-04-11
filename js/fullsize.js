@@ -38,7 +38,10 @@ function socialCommentsList ( ) {
 
 // Вешаем обработчик на сетку
 pictureElement.addEventListener('click', (event) => {
-// Удаляем класс "hidden" у элемента ".big-picture" и заполняем его данными о фотографии.
+  if (event.target.closest('.img-upload')) {
+    return;
+  }
+  // Удаляем класс "hidden" у элемента ".big-picture" и заполняем его данными о фотографии.
   fullSize.classList.remove('hidden');
   const eventTarget = event.target.closest('a');
   fullSize.querySelector('.big-picture__img img').src = eventTarget.querySelector('.picture__img').src;
@@ -54,6 +57,7 @@ pictureElement.addEventListener('click', (event) => {
   // Скрываем блоки ".social__comment-count" и  ".comments-loader".
   commentCount.classList.add('hidden');
   commentLoader.classList.add('hidden');
+
 });
 
 // Код для закрытия окна по нажатию клавиши Esc и клике по иконке закрытия.
@@ -72,4 +76,4 @@ document.addEventListener('keydown' ,  (evt) =>{
   }
 });
 
-
+export {body};
