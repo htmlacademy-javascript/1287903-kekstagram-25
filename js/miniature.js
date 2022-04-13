@@ -6,7 +6,7 @@ const pictureTemplate = document.querySelector('#picture').content.querySelector
 
 const pictureFragment = document.createDocumentFragment();
 
-randomNumber.forEach(({url,likes,comments,description}) => {
+randomNumber.forEach(({url,likes,comments,description,id}) => {
   const userElement = pictureTemplate.cloneNode(true);
 
   userElement.querySelector('.picture__img').src = url;
@@ -17,7 +17,10 @@ randomNumber.forEach(({url,likes,comments,description}) => {
 
   userElement.querySelector('.picture__comments').textContent = comments.length;
 
+  userElement.dataset.id = id;
+
   pictureFragment.appendChild(userElement);
+
 
 });
 
