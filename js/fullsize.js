@@ -4,19 +4,17 @@ import {pictureElement} from './miniature.js';
 // Создаём необходимые переменные
 const fullSize = document.querySelector('.big-picture');
 const body = document.querySelector('body');
-const socialCommentCount = document.querySelector('.social__comment-count');
-const commentsCount = document.querySelector('.comments-count');
+// const socialCommentCount = document.querySelector('.social__comment-count');
+// const commentsCount = document.querySelector('.comments-count');
 const socialComments = document.querySelector('.social__comments');
 const commentsLoader = document.querySelector('.comments-loader');
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
 const commmmentsFragment = document.createDocumentFragment();
 
-const amountMaxComments = 15;
-
 // Фрагмент комментария под фотографией:
 function socialCommentsList (id) {
   socialComments.innerHTML = '';
-  randomNumber.find(item => item.id === Number(id)).comments.forEach( (element) => {
+  randomNumber.find((item) => item.id === Number(id)).comments.forEach( (element) => {
     const li = document.createElement('li');
     li.classList.add('social__comment');
     const img = document.createElement('img');
